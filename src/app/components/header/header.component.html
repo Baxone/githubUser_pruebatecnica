@@ -1,0 +1,8 @@
+<form [formGroup]="searchForm" (ngSubmit)="getData()">
+
+  <div class="d-flex">
+    <input class="form-control me-3" type="text" formControlName="name" placeholder="introduce el nombre">
+    <button type="submit" class="btn btn-danger"><i class="fa-solid fa-magnifying-glass"></i></button>
+
+  </div>
+</form>
