@@ -2,7 +2,13 @@
 
   <div class="d-flex">
     <input class="form-control me-3" type="text" formControlName="name" placeholder="introduce el nombre">
-    <button type="submit" class="btn btn-danger"><i class="fa-solid fa-magnifying-glass"></i></button>
+    <button [disabled]="!searchForm.valid" type="submit" class="btn btn-danger"><i class="fa-solid fa-magnifying-glass"></i></button>
+
 
   </div>
+  <p *ngIf="searchForm.get('name')?.touched && searchForm.get('name')?.hasError('required')" class="text-danger">Campo obligatorio</p>
+
+  <p *ngIf="searchForm.get('name')?.touched && searchForm.get('name')?.hasError('minlength')" class="text-danger">Obligatorio más de 4 letras</p>
+
+  <p *ngIf="searchForm.get('name')?.touched && searchForm.get('name')?.hasError('mivalidador')" class="text-danger">No puedes buscar a Mario Giron, esta prohibido</p>
 </form>
