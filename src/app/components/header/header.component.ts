@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -8,14 +8,19 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class HeaderComponent {
   searchForm: FormGroup
+  @Output() nombreEmitido: EventEmitter<string>;
 
   constructor() {
+    this.nombreEmitido = new EventEmitter();
     this.searchForm = new FormGroup({
       name: new FormControl('', [])
     }, [])
   }
 
   getData(): void {
-    console.log(this.searchForm.value);
+    //console.log(this.searchForm.value);
+    //quiero enviarselo al padre a home. OUTPUT
+    this.nombreEmitido.emit(this.searchForm.value.name)
+
   }
 }
